@@ -18,7 +18,7 @@ after_success:
   - echo $DOCKER_PASSWORD | docker login -u $DOCKER_ID --password-stdin
 
   # take images and push them to docker hub
-  - dokcer push zheyujie/multi-client
-  - dokcer push zheyujie/multi-nginx
-  - dokcer push zheyujie/multi-server
-  - dokcer push zheyujie/multi-worker
+  - docker push zheyujie/multi-client
+  - docker push zheyujie/multi-nginx
+  - docker push zheyujie/multi-server
+  - docker push zheyujie/multi-worker
