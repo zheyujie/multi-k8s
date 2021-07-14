@@ -1,0 +1,24 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t zheyujie/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true zheyujie/react-test npm run test
+
+after_success:
+  - docker build -t zheyujie/multi-client ./client
+  - docker build -t zheyujie/multi-nginx ./nginx
+  - docker build -t zheyujie/multi-server ./server
+  - docker build -t zheyujie/multi-worker ./worker
+
+  # log in to the docker CLI
+  - echo $DOCKER_PASSWORD | docker login -u $DOCKER_ID --password-stdin
+
+  # take images and push them to docker hub
+  - dokcer push zheyujie/multi-client
+  - dokcer push zheyujie/multi-nginx
+  - dokcer push zheyujie/multi-server
+  - dokcer push zheyujie/multi-worker
