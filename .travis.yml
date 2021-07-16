@@ -23,3 +23,15 @@ after_success:
   - docker push zheyujie/multi-nginx
   - docker push zheyujie/multi-server
   - docker push zheyujie/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: ap-southeast-2
+  app: multi-docker
+  env: Multidocker-env
+  bucket_name: elasticbeanstalk-ap-southeast-2-010188734304
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY

@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "zheyujie/multi-client",
+            "hostName": "client",
+            "essential": false
+        },
+        {
+            "name": "ngxin",
+            "image": "zheyujie/multi-ngxin",
+            "hostName": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
+        },
+        {
+            "name": "server",
+            "image": "zheyujie/multi-server",
+            "hostName": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "zheyujie/multi-worker",
+            "hostName": "worker",
+            "essential": false
+        }
+    ]
+}
