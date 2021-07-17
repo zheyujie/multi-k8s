@@ -9,8 +9,8 @@
             "memory": 128
         },
         {
-            "name": "ngxin",
-            "image": "zheyujie/multi-ngxin",
+            "name": "nginx",
+            "image": "zheyujie/multi-nginx",
             "hostName": "nginx",
             "essential": true,
             "portMappings": [
