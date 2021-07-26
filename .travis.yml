@@ -14,7 +14,7 @@ before_install:
   - gcloud config set project infra-mix-320805
   - gcloud config set compute/zone australia-southeast1-a
   - gcloud container clusters get-credentials multi-cluster
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_PASSWORD" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker run -e CI=true zheyujie/react-test npm test
 
 scripts:
